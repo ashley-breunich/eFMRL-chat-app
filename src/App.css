@@ -1,13 +1,10 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Codystar|Noto+Sans+KR');
+
+/* .App {
   text-align: center;
-}
+} */
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -16,27 +13,77 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* li {
-  list-style-type: none;
-  text-indent: -2em;
 } */
+
+* {
+  font-family: 'Codystar', cursive;
+  text-align: center;
+  background-color: #A076E8;
+  }
+
+  header {
+    letter-spacing: .7em;
+    font-size: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #fff;
+    font-size: 1.2em;
+    line-height: 1.7em;
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  input {
+    padding-top: .5em;
+    padding-bottom: .5em;
+  }
+  
+  .loginForm {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .loginInput {
+    font-size: 18px;
+    padding: 35px;
+    border: none;
+    background: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  .wordInput {
+    background: #fff;
+    width: 90%;
+    font-size: 13px;
+    padding: 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+    border: none;
+    border-radius: 10px;
+    color: #666;
+  }
+
+  .monikerStyle {
+    margin-top: .6em;
+    font-size: .6em;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    display: block;
+    color: #fafafa;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
