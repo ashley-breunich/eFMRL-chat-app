@@ -18,7 +18,7 @@
 * {
   font-family: 'Codystar', cursive;
   text-align: center;
-  background-color: #A076E8;
+  background-color: #AE86E8;
   }
 
   header {
@@ -69,7 +69,7 @@
 
   .wordInput {
     background: #fff;
-    width: 90%;
+    width:86%;
     font-size: 13px;
     padding: 25px;
     font-family: 'Noto Sans KR', sans-serif;
