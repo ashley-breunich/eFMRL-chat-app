@@ -15,6 +15,7 @@ class Chatter extends React.Component {
         wordCount: 0,
         moniker: '',
         loggedIn: false,
+        inputVal: 'Type your message here...'
       };
       socket.on('chat message', payload => this.updateWords(payload));
     }
@@ -31,6 +32,7 @@ class Chatter extends React.Component {
   
     handleSubmit = event => {
       event.preventDefault();
+      event.target.reset();
       socket.emit('chat message', this.state.typedInput);
     };
   
@@ -62,7 +64,7 @@ class Chatter extends React.Component {
                 <input
                     className='wordInput'
                     name="typedInput"
-                    placeholder="Type your message here..."
+                    placeholder={this.state.inputVal}
                     onChange={this.handleNewWords}
                 />
             </form>
