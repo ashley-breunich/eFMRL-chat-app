@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import Header from './components/header/header.js';
+import Chatter from './components/chat/chat.js'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>Hello enSeven Team!
-          </p>
-        </header>
+          <Header />
+          <Chatter />
       </div>
     );
   }
