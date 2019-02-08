@@ -34,6 +34,7 @@ class Chatter extends React.Component {
       event.preventDefault();
       event.target.reset();
       socket.emit('chat message', this.state.typedInput);
+      console.log(this.state);
     };
   
     handleNewWords = event => {
@@ -46,11 +47,11 @@ class Chatter extends React.Component {
             loggedIn: true,
             moniker: this.state.moniker
         });
-        console.log(this.state.moniker, 'moniker');
     }
 
     handleName = event => {
         this.setState({ moniker: event.target.value });
+        this.setState({ [socket.id]: this.state.moniker });
       };
   
     render() {
@@ -72,7 +73,7 @@ class Chatter extends React.Component {
                 {Object.keys(this.state.words).map((words, idx) => {
                 return (
                     <li key={this.state.words.length - (idx + 1)}>
-                    {this.state.words[this.state.words.length - (idx + 1)]} <span className='monikerStyle'>{this.state.moniker}</span>
+                    {this.state.words[this.state.words.length - (idx + 1)]} <span className='monikerStyle'>{this.state[socket.id]}</span>
                     </li>
                 );
                 })}
