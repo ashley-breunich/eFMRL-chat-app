@@ -2,6 +2,7 @@ import React from "react";
 
 const Moniker = props => {
     return (
+      <>
      <form className='loginForm' onSubmit={props.nameSubmit}>
         <input
           className='loginInput'
@@ -10,6 +11,8 @@ const Moniker = props => {
           onChange={props.nameTracker}
         />
       </form>
+      <p>{props.error}</p>
+      </>
     );
   };
   
