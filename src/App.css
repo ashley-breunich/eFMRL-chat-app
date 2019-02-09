@@ -3,7 +3,7 @@
 * {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  background-color: #663047;
+  background-color: #7a4a88;
   }
 
   header {
@@ -29,7 +29,7 @@
     font-weight: 700;
     letter-spacing: .05em;
     line-height: 1.7em;
-    margin-bottom: 2.8em;
+    margin-bottom: 2em;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -50,11 +50,17 @@
   }
 
   .loginInput {
-    font-size: 18px;
-    padding: 35px;
+    font-size: 1.1em;
+    padding: 2em;
     border: none;
     background: #fff;
     border-radius: .7em;
+  }
+
+  .loginError {
+    color: #fafafa;
+    font-size: .8em;
+    margin-top: 1.3em;
   }
 
   .wordInput {
@@ -69,11 +75,58 @@
   }
 
   .monikerStyle {
-    margin-top: .6em;
+    margin-top: .2em;
     font-size: .5em;
     font-weight: 500;
     letter-spacing: .4em;
     text-transform: uppercase;
     display: block;
     color: #fafafa;
+  }
+
+  .chatWrapper {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .roomColumn {
+    float: left;
+    width: 25%;
+    background: #bd93d3;
+    border-radius: .7em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+  }
+
+  .roomColumn h2 {
+    text-align: left;
+    margin-left: 1.2em;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: .16em;
+    background: #bd93d3;
+  }
+
+  .roomColumn ul {
+    margin-left: 2em;
+    background: #bd93d3;
+
+  }
+
+  .roomColumn ul li {
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 1.1em;
+    font-size: .95em;
+    letter-spacing: .24em;
+    font-weight: 500;
+    background: #bd93d3;
+  }
+
+  .chatColumn {
+    float: left;
+    width: 75%;
   }
