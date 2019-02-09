@@ -1,9 +1,10 @@
 import React from "react";
+import logo from "../../assets/efmrl-chat-v3.png";
 
 const Header = props => {
     return (
       <header>
-        <h1>eFMRL Chat</h1>
+        <img src={logo} alt="efmrl logo" />
       </header>
     );
   };
