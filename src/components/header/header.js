@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/efmrl-chat-v3.png";
+import logo from "../../assets/efmrl-chat-v4.png";
 
 const Header = props => {
     return (
