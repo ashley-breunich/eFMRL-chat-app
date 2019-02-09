@@ -1,32 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Codystar|Noto+Sans+KR');
-
-/* .App {
-  text-align: center;
-} */
-
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700');
 
 * {
-  font-family: 'Codystar', cursive;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
-  background-color: #AE86E8;
+  background-color: #663047;
   }
 
   header {
     letter-spacing: .7em;
-    font-size: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 2.5em;
+    padding-bottom: 4em;
     color: #fff;
+  }
+
+  header img {
+    width: 50%;
+    margin-bottom: 2em;
   }
 
   ul {
@@ -35,9 +24,10 @@
   }
 
   li {
-    font-family: 'Noto Sans KR', sans-serif;
     color: #fff;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    font-weight: 700;
+    letter-spacing: .05em;
     line-height: 1.7em;
     margin-bottom: 2.8em;
     width: 80%;
@@ -64,27 +54,26 @@
     padding: 35px;
     border: none;
     background: #fff;
-    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: .7em;
   }
 
   .wordInput {
     background: #fff;
-    width:86%;
-    font-size: 13px;
-    padding: 25px;
-    font-family: 'Noto Sans KR', sans-serif;
+    width:85%;
+    font-size: 1.1em;
+    padding: 1.5em;
     border: none;
-    border-radius: 10px;
+    border-radius: .7em;
     color: #666;
     margin-bottom: 3em;
   }
 
   .monikerStyle {
     margin-top: .6em;
-    font-size: .6em;
+    font-size: .5em;
+    font-weight: 500;
     letter-spacing: .4em;
     text-transform: uppercase;
     display: block;
     color: #fafafa;
-    font-family: 'Noto Sans KR', sans-serif;
   }
