@@ -14,10 +14,25 @@ class Chatter extends React.Component {
         words: [],
         wordCount: 0,
         moniker: '',
+        tempNames: [],
         loggedIn: false,
-        inputVal: 'Type your message here...'
+        inputVal: 'Type your message here...',
+        error: '',
       };
-      socket.on('chat message', payload => this.updateWords(payload));
+    //   socket.on('chat message', payload => this.updateWords(payload.msg));
+    socket.on('chat message', (payload) => {
+        this.updateWords(payload.msg);
+        this.updateNicknames(payload.nickname);
+    })
+    }
+
+    updateNicknames = nickname => {
+        if (this.state.wordCount > 15) {
+            this.state.tempNames.shift();
+        }
+        this.setState({ tempNames: [...this.state.tempNames, nickname] });
+        console.log('nickname', this.state.tempNames);
+
     }
   
     updateWords = words => {
@@ -42,23 +57,23 @@ class Chatter extends React.Component {
     };
 
     handleNameSubmit = event => {
-        event.preventDefault();
-        this.setState({ 
-            loggedIn: true,
-            moniker: this.state.moniker
-        });
+       event.preventDefault();
+       this.setState({ 
+        loggedIn: true,
+        moniker: this.state.typedInput,
+       });
+       socket.emit('new user', this.state.moniker);
     }
 
     handleName = event => {
         this.setState({ moniker: event.target.value });
-        this.setState({ [socket.id]: this.state.moniker });
       };
   
     render() {
       return (
         <>
         <If condition={!this.state.loggedIn}>
-            <Moniker nameTracker={this.handleName} nameSubmit={this.handleNameSubmit}/>
+            <Moniker nameTracker={this.handleName} nameSubmit={this.handleNameSubmit} error={this.state.error}/>
         </If>
         <If condition={this.state.loggedIn}>
             <form onSubmit={this.handleSubmit}>
@@ -69,11 +84,12 @@ class Chatter extends React.Component {
                     onChange={this.handleNewWords}
                 />
             </form>
+            <div className='users'></div>
             <ul>
                 {Object.keys(this.state.words).map((words, idx) => {
                 return (
                     <li key={this.state.words.length - (idx + 1)}>
-                    {this.state.words[this.state.words.length - (idx + 1)]} <span className='monikerStyle'>{this.state[socket.id]}</span>
+                    {this.state.words[this.state.words.length - (idx + 1)]} <span className='monikerStyle'>{this.state.tempNames[this.state.tempNames.length - (idx + 1)]}</span>
                     </li>
                 );
                 })}
