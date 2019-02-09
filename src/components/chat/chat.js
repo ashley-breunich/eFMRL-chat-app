@@ -12,18 +12,18 @@ class Chatter extends React.Component {
       this.state = {
         typedInput: '',
         words: [],
+        tempNames: [],
         wordCount: 0,
         moniker: '',
-        tempNames: [],
         loggedIn: false,
         inputVal: 'Type your message here...',
         error: '',
       };
     //   socket.on('chat message', payload => this.updateWords(payload.msg));
-    socket.on('chat message', (payload) => {
-        this.updateWords(payload.msg);
-        this.updateNicknames(payload.nickname);
-    })
+        socket.on('chat message', (payload) => {
+            this.updateWords(payload.msg);
+            this.updateNicknames(payload.nickname);
+        });
     }
 
     updateNicknames = nickname => {
@@ -43,7 +43,7 @@ class Chatter extends React.Component {
       }
         this.setState({ words: [...this.state.words, words] });
         console.log('word', this.state.words);
-      };
+    };
   
     handleSubmit = event => {
       event.preventDefault();
@@ -56,18 +56,36 @@ class Chatter extends React.Component {
       this.setState({ typedInput: event.target.value });
     };
 
-    handleNameSubmit = event => {
+    // handleNameSubmit = event => {
+    //    event.preventDefault();
+    //    this.setState({ 
+    //     loggedIn: true,
+    //     moniker: this.state.typedInput,
+    //    });
+    //    socket.emit('new user', this.state.moniker);
+    // }
+
+      handleNameSubmit = event => {
        event.preventDefault();
        this.setState({ 
-        loggedIn: true,
         moniker: this.state.typedInput,
        });
-       socket.emit('new user', this.state.moniker);
+       socket.emit('new user', this.state.moniker, (data) => {
+           if(data) {
+               this.setState({
+                    loggedIn: true,
+               });
+           } else {
+                this.setState({
+                    error: 'This moniker is already taken. Please choose another one.',
+                });
+           }
+       });
     }
 
     handleName = event => {
         this.setState({ moniker: event.target.value });
-      };
+    };
   
     render() {
       return (

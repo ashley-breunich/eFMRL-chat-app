@@ -50,11 +50,17 @@
   }
 
   .loginInput {
-    font-size: 18px;
-    padding: 35px;
+    font-size: 1.1em;
+    padding: 2em;
     border: none;
     background: #fff;
     border-radius: .7em;
+  }
+
+  .loginError {
+    color: #fafafa;
+    font-size: .8em;
+    margin-top: 1.3em;
   }
 
   .wordInput {

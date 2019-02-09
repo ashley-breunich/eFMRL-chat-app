@@ -10,8 +10,8 @@ const Moniker = props => {
           placeholder="What is your name?"
           onChange={props.nameTracker}
         />
+        <p className='loginError'>{props.error}</p>
       </form>
-      <p>{props.error}</p>
       </>
     );
   };
