@@ -49,13 +49,21 @@ class Chatter extends React.Component {
         console.log('nickname', this.state.rooms[this.state.currentRoom].tempNames);
     }
 
+    // updateRooms = event => {
+    //     let previousRoom = this.state.currentRoom;
+    //     // console.log('previousroom', previousRoom);
+    //     this.setState({ currentRoom: event.target.value })
+    //     if (this.state.currentRoom !== previousRoom) {
+    //         socket.emit('room', this.state.currentRoom);
+    //     }
+    // }
+
     updateRooms = event => {
-        let previousRoom = this.state.currentRoom;
-        // console.log('previousroom', previousRoom);
         this.setState({ currentRoom: event.target.value })
-        if (this.state.currentRoom !== previousRoom) {
-            socket.emit('room', this.state.currentRoom);
-        }
+    }
+
+    componentWillUpdate() {
+        socket.emit('room', this.state.currentRoom);
     }
   
     updateWords = words => {
