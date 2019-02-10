@@ -96,8 +96,8 @@
   }
 
   .chatColumn h2 {
-    text-align: left;
-    padding-left: 1em;
+    text-align: right;
+    width: 90%;
     color: #fff;
     font-weight: 400;
     letter-spacing: .15em;

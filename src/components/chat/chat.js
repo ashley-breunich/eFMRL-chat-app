@@ -42,38 +42,38 @@ class Chatter extends React.Component {
     }
 
     updateNicknames = nickname => {
-        let curr = this.state.currentRoom
-        if (this.state.rooms[curr].wordCount > 15) {
-            this.state.rooms[curr].tempNames.shift();
+        if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
+            this.state.rooms[this.state.currentRoom].tempNames.shift();
         }
-        this.setState({ rooms: {...this.state.rooms, [curr]: {...this.state.rooms[curr], tempNames: [...this.state.rooms[curr].tempNames, nickname] }} })
-        console.log('nickname', this.state.rooms[curr].tempNames);
+        this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], tempNames: [...this.state.rooms[this.state.currentRoom].tempNames, nickname] }} })
+        console.log('nickname', this.state.rooms[this.state.currentRoom].tempNames);
     }
 
-    updateRooms = e => {
+    updateRooms = event => {
         let previousRoom = this.state.currentRoom;
-        this.setState({ currentRoom: e.target.value })
+        console.log('previousroom', previousRoom);
+        this.setState({ currentRoom: event.target.value })
         if (this.state.currentRoom !== previousRoom) {
             socket.emit('room', this.state.currentRoom);
         }
     }
   
     updateWords = words => {
-        let curr = this.state.currentRoom;
         this.setState({
-            rooms: {...this.state.rooms, [curr]: {...this.state.rooms[curr], wordCount: this.state.rooms[curr].wordCount + 1 }}
+            rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], wordCount: this.state.rooms[this.state.currentRoom].wordCount + 1 }}
         })
-        console.log('word count', this.state.rooms[curr].wordCount);
-        if (this.state.rooms[curr].wordCount > 15) {
-            this.state.rooms[curr].words.shift();
+        console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
+        if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
+            this.state.rooms[this.state.currentRoom].words.shift();
         }
-        this.setState({ rooms: {...this.state.rooms, [curr]: {...this.state.rooms[curr], words: [...this.state.rooms[curr].words, words] }} })
-        console.log('word', this.state.rooms[curr].words);
+        this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], words: [...this.state.rooms[this.state.currentRoom].words, words] }} })
+        console.log('word', this.state.rooms[this.state.currentRoom].words);
     };
   
     handleSubmit = event => {
       event.preventDefault();
       event.target.reset();
+      console.log('currentroom', this.state.currentRoom);
       socket.emit('chat message', this.state.typedInput);
     };
   
@@ -117,6 +117,7 @@ class Chatter extends React.Component {
                 <Rooms updateRooms={this.updateRooms}/>
             </div>
             <div className="chatColumn">
+                <h2>{this.state.currentRoom} room</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input
                         className='wordInput'
