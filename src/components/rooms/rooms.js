@@ -1,20 +1,18 @@
 import React from "react";
 
-let currentRooms = ['sports', 'coding', 'random'];
+let currentRooms = ['general', 'sports', 'coding'];
 
 const Rooms = props => {
     return (
       <>
         <h2 className='roomTitle'>Rooms</h2>
-        <ul>
             {Object.keys(currentRooms).map((room, idx) => {
             return (
-                <li key={idx}>
+                <button key={currentRooms[idx]} value={currentRooms[idx]} onClick={props.updateRooms}>
                 {currentRooms[idx]}
-                </li>
+                </button>
             );
             })}
-        </ul>
       </>
     );
   };

@@ -12,48 +12,69 @@ class Chatter extends React.Component {
       super(props);
       this.state = {
         typedInput: '',
-        // rooms: {
-        //     sports: {
-                    
-        //     }
-        // },
-        words: [],
-        tempNames: [],
-        wordCount: 0,
+        rooms: {
+            general: {
+                wordCount: 0,
+                words: [],
+                tempNames: [],
+            },
+            sports: {
+                wordCount: 0,
+                words: [],
+                tempNames: [],
+            },
+            coding: {
+                wordCount: 0,
+                words: [],
+                tempNames: [],
+            }
+        },
         moniker: '',
         loggedIn: false,
         inputVal: 'Type your message here...',
         error: '',
+        currentRoom: 'general',
       };
         socket.on('chat message', (payload) => {
-            this.updateWords(payload.msg);
-            this.updateNicknames(payload.nickname);
+            this.updateWords(payload.content);
+            this.updateNicknames(payload.moniker);
         });
     }
 
     updateNicknames = nickname => {
-        if (this.state.wordCount > 15) {
-            this.state.tempNames.shift();
+        let curr = this.state.currentRoom
+        if (this.state.rooms[curr].wordCount > 15) {
+            this.state.rooms[curr].tempNames.shift();
         }
-        this.setState({ tempNames: [...this.state.tempNames, nickname] });
-        console.log('nickname', this.state.tempNames);
+        this.setState({ rooms: {...this.state.rooms, [curr]: {...this.state.rooms[curr], tempNames: [...this.state.rooms[curr].tempNames, nickname] }} })
+        console.log('nickname', this.state.rooms[curr].tempNames);
+    }
+
+    updateRooms = e => {
+        let previousRoom = this.state.currentRoom;
+        this.setState({ currentRoom: e.target.value })
+        if (this.state.currentRoom !== previousRoom) {
+            socket.emit('room', this.state.currentRoom);
+        }
     }
   
     updateWords = words => {
-        this.setState({ wordCount: this.state.wordCount + 1 });
-        console.log('word count', this.state.wordCount);
-        if (this.state.wordCount > 15) {
-          this.state.words.shift();
+        let curr = this.state.currentRoom;
+        this.setState({
+            rooms: {...this.state.rooms, [curr]: {...this.state.rooms[curr], wordCount: this.state.rooms[curr].wordCount + 1 }}
+        })
+        console.log('word count', this.state.rooms[curr].wordCount);
+        if (this.state.rooms[curr].wordCount > 15) {
+            this.state.rooms[curr].words.shift();
         }
-        this.setState({ words: [...this.state.words, words] });
-        console.log('word', this.state.words);
+        this.setState({ rooms: {...this.state.rooms, [curr]: {...this.state.rooms[curr], words: [...this.state.rooms[curr].words, words] }} })
+        console.log('word', this.state.rooms[curr].words);
     };
   
     handleSubmit = event => {
       event.preventDefault();
       event.target.reset();
       socket.emit('chat message', this.state.typedInput);
-      console.log(this.state);
     };
   
     handleNewWords = event => {
@@ -71,6 +92,7 @@ class Chatter extends React.Component {
                this.setState({
                     loggedIn: true,
                });
+               socket.emit('room', this.state.currentRoom);
            } else {
                 this.setState({
                     error: 'This moniker is already taken. Please choose another one.',
@@ -92,7 +114,7 @@ class Chatter extends React.Component {
         <If condition={this.state.loggedIn}>
         <div className='chatWrapper'>
             <div className="roomColumn">
-                    <Rooms />
+                <Rooms updateRooms={this.updateRooms}/>
             </div>
             <div className="chatColumn">
                 <form onSubmit={this.handleSubmit}>
@@ -104,10 +126,10 @@ class Chatter extends React.Component {
                     />
                 </form>
                 <ul>
-                    {Object.keys(this.state.words).map((words, idx) => {
+                    {Object.keys(this.state.rooms[this.state.currentRoom].words).map((words, idx) => {
                     return (
-                        <li key={this.state.words.length - (idx + 1)}>
-                        {this.state.words[this.state.words.length - (idx + 1)]} <span className='monikerStyle'>{this.state.tempNames[this.state.tempNames.length - (idx + 1)]}</span>
+                        <li key={this.state.rooms[this.state.currentRoom].words.length - (idx + 1)}>
+                        {this.state.rooms[this.state.currentRoom].words[this.state.rooms[this.state.currentRoom].words.length - (idx + 1)]} <span className='monikerStyle'>{this.state.rooms[this.state.currentRoom].tempNames[this.state.rooms[this.state.currentRoom].tempNames.length - (idx + 1)]}</span>
                         </li>
                     );
                     })}

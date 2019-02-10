@@ -18,23 +18,6 @@
     margin-bottom: 2em;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    color: #fff;
-    font-size: 1.5em;
-    font-weight: 700;
-    letter-spacing: .05em;
-    line-height: 1.7em;
-    margin-bottom: 2em;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   input {
     padding-top: .5em;
     padding-bottom: .5em;
@@ -63,27 +46,6 @@
     margin-top: 1.3em;
   }
 
-  .wordInput {
-    background: #fff;
-    width:85%;
-    font-size: 1.1em;
-    padding: 1.5em;
-    border: none;
-    border-radius: .7em;
-    color: #666;
-    margin-bottom: 3em;
-  }
-
-  .monikerStyle {
-    margin-top: .2em;
-    font-size: .5em;
-    font-weight: 500;
-    letter-spacing: .4em;
-    text-transform: uppercase;
-    display: block;
-    color: #fafafa;
-  }
-
   .chatWrapper {
     width: 96%;
     margin-left: auto;
@@ -94,7 +56,7 @@
     float: left;
     width: 25%;
     background: #bd93d3;
-    border-radius: .7em;
+    border-radius: .9em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
   }
@@ -110,13 +72,7 @@
     background: #bd93d3;
   }
 
-  .roomColumn ul {
-    margin-left: 2em;
-    background: #bd93d3;
-
-  }
-
-  .roomColumn ul li {
+  .roomColumn button {
     text-align: left;
     margin-left: 0;
     margin-bottom: 1.1em;
@@ -124,9 +80,67 @@
     letter-spacing: .24em;
     font-weight: 500;
     background: #bd93d3;
+    margin-left: 1.7em;
+    display: block;
+    border: none;
+  }
+
+  .roomColumn button:hover {
+    font-weight: 900;
+    color: #311432;
   }
 
   .chatColumn {
     float: left;
     width: 75%;
+  }
+
+  .chatColumn h2 {
+    text-align: left;
+    padding-left: 1em;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: .15em;
+    margin-top: 2.2em;
+    font-size: 1.3em;
+  }
+
+  .wordInput {
+    background: #fff;
+    width:85%;
+    font-size: 1.1em;
+    padding: 1.5em;
+    border: none;
+    border-radius: .7em;
+    color: #666;
+    margin-bottom: 3em;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 700;
+    letter-spacing: .05em;
+    line-height: 1.7em;
+    margin-bottom: 2em;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .monikerStyle {
+    margin-top: .2em;
+    font-size: .5em;
+    font-weight: 500;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    display: block;
+    color: #fafafa;
+    text-align: left;
   }
