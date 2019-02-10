@@ -51,7 +51,7 @@ class Chatter extends React.Component {
 
     updateRooms = event => {
         let previousRoom = this.state.currentRoom;
-        console.log('previousroom', previousRoom);
+        // console.log('previousroom', previousRoom);
         this.setState({ currentRoom: event.target.value })
         if (this.state.currentRoom !== previousRoom) {
             socket.emit('room', this.state.currentRoom);
@@ -73,12 +73,17 @@ class Chatter extends React.Component {
     handleSubmit = event => {
       event.preventDefault();
       event.target.reset();
-      console.log('currentroom', this.state.currentRoom);
-      socket.emit('chat message', this.state.typedInput);
+    //   console.log('currentroom', this.state.currentRoom);
+    //   socket.emit('chat message', messageDetails);
+    socket.emit('chat message', this.state.typedInput);
     };
-  
+
     handleNewWords = event => {
-      this.setState({ typedInput: event.target.value });
+        this.setState({ typedInput: event.target.value });
+    };
+
+    handleName = event => {
+        this.setState({ moniker: event.target.value });
     };
 
     handleNameSubmit = event => {
@@ -100,10 +105,6 @@ class Chatter extends React.Component {
            }
        });
     }
-
-    handleName = event => {
-        this.setState({ moniker: event.target.value });
-    };
   
     render() {
       return (
