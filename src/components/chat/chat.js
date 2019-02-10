@@ -34,8 +34,10 @@ class Chatter extends React.Component {
         inputVal: 'Type your message here...',
         error: '',
         currentRoom: 'general',
+        previousRoom: null,
       };
         socket.on('chat message', (payload) => {
+            console.log('client chat payload', payload);
             this.updateWords(payload.content);
             this.updateNicknames(payload.moniker);
         });
@@ -50,24 +52,28 @@ class Chatter extends React.Component {
     }
 
     updateRooms = event => {
-        let previousRoom = this.state.currentRoom;
-        // console.log('previousroom', previousRoom);
-        this.setState({ currentRoom: event.target.value })
-        if (this.state.currentRoom !== previousRoom) {
-            socket.emit('room', this.state.currentRoom);
-        }
+        this.setState({ 
+            previousRoom: this.state.currentRoom,
+            currentRoom: event.target.value 
+        })
+    }
+
+    componentWillUpdate() {
+        socket.emit('room', {current: this.state.currentRoom, previous: this.state.previousRoom});
     }
   
     updateWords = words => {
         this.setState({
             rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], wordCount: this.state.rooms[this.state.currentRoom].wordCount + 1 }}
         })
-        console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
+        // console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
             this.state.rooms[this.state.currentRoom].words.shift();
         }
         this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], words: [...this.state.rooms[this.state.currentRoom].words, words] }} })
-        console.log('word', this.state.rooms[this.state.currentRoom].words);
+        // console.log('word', this.state.rooms[this.state.currentRoom].words);
+        console.log('previousroom', this.state.previousRoom);
+        console.log('currentroom', this.state.currentRoom);
     };
   
     handleSubmit = event => {
@@ -75,7 +81,7 @@ class Chatter extends React.Component {
       event.target.reset();
     //   console.log('currentroom', this.state.currentRoom);
     //   socket.emit('chat message', messageDetails);
-    socket.emit('chat message', this.state.typedInput);
+    socket.emit('chat message', {data: this.state.typedInput, room: this.state.currentRoom});
     };
 
     handleNewWords = event => {
