@@ -30,6 +30,12 @@ class Chatter extends React.Component {
                 words: [],
                 tempNames: [],
                 timestamps: [],
+            },
+            fashion: {
+                wordCount: 0,
+                words: [],
+                tempNames: [],
+                timestamps: [],
             }
         },
         moniker: '',
@@ -51,7 +57,7 @@ class Chatter extends React.Component {
         this.setState({
             rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], wordCount: this.state.rooms[this.state.currentRoom].wordCount + 1 }}
         })
-        console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
+        // console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
             this.state.rooms[this.state.currentRoom].words.shift();
         }
@@ -66,7 +72,7 @@ class Chatter extends React.Component {
             this.state.rooms[this.state.currentRoom].tempNames.shift();
         }
         this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], tempNames: [...this.state.rooms[this.state.currentRoom].tempNames, nickname] }} })
-        console.log('nickname', this.state.rooms[this.state.currentRoom].tempNames);
+        // console.log('nickname', this.state.rooms[this.state.currentRoom].tempNames);
     };
 
     updateTimestamps = timestamp => {
@@ -74,7 +80,6 @@ class Chatter extends React.Component {
             this.state.rooms[this.state.currentRoom].timestamps.shift();
         }
         this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], timestamps: [...this.state.rooms[this.state.currentRoom].timestamps, timestamp] }} })
-        console.log('timestamp', this.state.rooms[this.state.currentRoom].timestamps);
     };
 
     updateRooms = event => {
@@ -87,7 +92,6 @@ class Chatter extends React.Component {
     componentWillUpdate() {
         socket.emit('room', {current: this.state.currentRoom, previous: this.state.previousRoom});
     };
-
   
     handleSubmit = event => {
       event.preventDefault();
