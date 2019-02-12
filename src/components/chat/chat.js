@@ -17,16 +17,19 @@ class Chatter extends React.Component {
                 wordCount: 0,
                 words: [],
                 tempNames: [],
+                timestamps: [],
             },
             sports: {
                 wordCount: 0,
                 words: [],
                 tempNames: [],
+                timestamps: [],
             },
             coding: {
                 wordCount: 0,
                 words: [],
                 tempNames: [],
+                timestamps: [],
             }
         },
         moniker: '',
@@ -40,8 +43,23 @@ class Chatter extends React.Component {
             console.log('client chat payload', payload);
             this.updateWords(payload.content);
             this.updateNicknames(payload.moniker);
+            this.updateTimestamps(payload.timestamp);
         });
     }
+
+    updateWords = words => {
+        this.setState({
+            rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], wordCount: this.state.rooms[this.state.currentRoom].wordCount + 1 }}
+        })
+        console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
+        if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
+            this.state.rooms[this.state.currentRoom].words.shift();
+        }
+        this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], words: [...this.state.rooms[this.state.currentRoom].words, words] }} })
+        // console.log('word', this.state.rooms[this.state.currentRoom].words);
+        // console.log('previousroom', this.state.previousRoom);
+        // console.log('currentroom', this.state.currentRoom);
+    };
 
     updateNicknames = nickname => {
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
@@ -49,7 +67,15 @@ class Chatter extends React.Component {
         }
         this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], tempNames: [...this.state.rooms[this.state.currentRoom].tempNames, nickname] }} })
         console.log('nickname', this.state.rooms[this.state.currentRoom].tempNames);
-    }
+    };
+
+    updateTimestamps = timestamp => {
+        if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
+            this.state.rooms[this.state.currentRoom].timestamps.shift();
+        }
+        this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], timestamps: [...this.state.rooms[this.state.currentRoom].timestamps, timestamp] }} })
+        console.log('timestamp', this.state.rooms[this.state.currentRoom].timestamps);
+    };
 
     updateRooms = event => {
         this.setState({ 
@@ -60,21 +86,8 @@ class Chatter extends React.Component {
 
     componentWillUpdate() {
         socket.emit('room', {current: this.state.currentRoom, previous: this.state.previousRoom});
-    }
-  
-    updateWords = words => {
-        this.setState({
-            rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], wordCount: this.state.rooms[this.state.currentRoom].wordCount + 1 }}
-        })
-        // console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
-        if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
-            this.state.rooms[this.state.currentRoom].words.shift();
-        }
-        this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], words: [...this.state.rooms[this.state.currentRoom].words, words] }} })
-        // console.log('word', this.state.rooms[this.state.currentRoom].words);
-        console.log('previousroom', this.state.previousRoom);
-        console.log('currentroom', this.state.currentRoom);
     };
+
   
     handleSubmit = event => {
       event.preventDefault();
@@ -110,7 +123,7 @@ class Chatter extends React.Component {
                 });
            }
        });
-    }
+    };
   
     render() {
       return (
@@ -137,7 +150,7 @@ class Chatter extends React.Component {
                     {Object.keys(this.state.rooms[this.state.currentRoom].words).map((words, idx) => {
                     return (
                         <li key={this.state.rooms[this.state.currentRoom].words.length - (idx + 1)}>
-                        {this.state.rooms[this.state.currentRoom].words[this.state.rooms[this.state.currentRoom].words.length - (idx + 1)]} <span className='monikerStyle'>{this.state.rooms[this.state.currentRoom].tempNames[this.state.rooms[this.state.currentRoom].tempNames.length - (idx + 1)]}</span>
+                        {this.state.rooms[this.state.currentRoom].words[this.state.rooms[this.state.currentRoom].words.length - (idx + 1)]} <span className='timestamp'>{this.state.rooms[this.state.currentRoom].tempNames[this.state.rooms[this.state.currentRoom].tempNames.length - (idx + 1)]} ·  {this.state.rooms[this.state.currentRoom].timestamps[this.state.rooms[this.state.currentRoom].timestamps.length - (idx + 1)]} </span>
                         </li>
                     );
                     })}
