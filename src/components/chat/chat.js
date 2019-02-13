@@ -130,41 +130,50 @@ class Chatter extends React.Component {
     };
   
     render() {
-      return (
-        <>
-        <If condition={!this.state.loggedIn}>
-            <Moniker nameTracker={this.handleName} nameSubmit={this.handleNameSubmit} error={this.state.error}/>
-        </If>
-        <If condition={this.state.loggedIn}>
-        <div className='chatWrapper'>
-            <div className="roomColumn">
-                <Rooms updateRooms={this.updateRooms}/>
-            </div>
-            <div className="chatColumn">
-                <h2>{this.state.currentRoom} room</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        className='wordInput'
-                        name="typedInput"
-                        placeholder={this.state.inputVal}
-                        onChange={this.handleNewWords}
-                    />
-                </form>
-                <ul>
-                    {Object.keys(this.state.rooms[this.state.currentRoom].words).map((words, idx) => {
-                    return (
-                        <li key={this.state.rooms[this.state.currentRoom].words.length - (idx + 1)}>
-                        {this.state.rooms[this.state.currentRoom].words[this.state.rooms[this.state.currentRoom].words.length - (idx + 1)]} <span className='timestamp'>{this.state.rooms[this.state.currentRoom].tempNames[this.state.rooms[this.state.currentRoom].tempNames.length - (idx + 1)]} ·  {this.state.rooms[this.state.currentRoom].timestamps[this.state.rooms[this.state.currentRoom].timestamps.length - (idx + 1)]} </span>
-                        </li>
-                    );
-                    })}
-                </ul>
-            </div>
-        </div>
-        </If>
-        </>
-      );
-    }
+        return (
+          <>
+          <If condition={!this.state.loggedIn}>
+              <Moniker nameTracker={this.handleName} nameSubmit={this.handleNameSubmit} error={this.state.error}/>
+          </If>
+          <If condition={this.state.loggedIn}>
+          <div className='chatWrapper'>
+              <div className="roomColumn">
+                  <Rooms updateRooms={this.updateRooms}/>
+              </div>
+              <div className="chatColumn">
+                  <h2>{this.state.currentRoom} room</h2>
+                  <ul>
+                      {Object.keys(this.state.rooms[this.state.currentRoom].words).map((words, idx) => {
+                      return (
+                          <li key={this.state.rooms[this.state.currentRoom].words.length - (idx + 1)}>
+                          {this.state.rooms[this.state.currentRoom].words[this.state.rooms[this.state.currentRoom].words.length - (idx + 1)]} <span className='timestamp'>{this.state.rooms[this.state.currentRoom].tempNames[this.state.rooms[this.state.currentRoom].tempNames.length - (idx + 1)]} ·  {this.state.rooms[this.state.currentRoom].timestamps[this.state.rooms[this.state.currentRoom].timestamps.length - (idx + 1)]} </span>
+                          </li>
+                      );
+                      })}
+                  </ul>
+                  <form onSubmit={this.handleSubmit}>
+                      <input
+                          className='wordInput'
+                          name="typedInput"
+                          placeholder={this.state.inputVal}
+                          onChange={this.handleNewWords}
+                      />
+                  </form>
+                  {/* <ul>
+                      {Object.keys(this.state.rooms[this.state.currentRoom].words).map((words, idx) => {
+                      return (
+                          <li key={this.state.rooms[this.state.currentRoom].words.length - (idx + 1)}>
+                          {this.state.rooms[this.state.currentRoom].words[this.state.rooms[this.state.currentRoom].words.length - (idx + 1)]} <span className='timestamp'>{this.state.rooms[this.state.currentRoom].tempNames[this.state.rooms[this.state.currentRoom].tempNames.length - (idx + 1)]} ·  {this.state.rooms[this.state.currentRoom].timestamps[this.state.rooms[this.state.currentRoom].timestamps.length - (idx + 1)]} </span>
+                          </li>
+                      );
+                      })}
+                  </ul> */}
+              </div>
+          </div>
+          </If>
+          </>
+        );
+      }
   }
   
   export default Chatter;
