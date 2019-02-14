@@ -42,10 +42,12 @@ class Chatter extends React.Component {
         loggedIn: false,
         inputVal: 'Type your message here...',
         error: '',
-        currentRoom: 'general',
+        currentRoom: 'sports',
         previousRoom: null,
+        prevProps: {},
+        count: 0,
       };
-        socket.on('chat message', (payload) => {
+        socket.on('chat', (payload) => {
             console.log('client chat payload', payload);
             this.updateWords(payload.content);
             this.updateNicknames(payload.moniker);
@@ -57,14 +59,12 @@ class Chatter extends React.Component {
         this.setState({
             rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], wordCount: this.state.rooms[this.state.currentRoom].wordCount + 1 }}
         })
-        // console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
+        console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
             this.state.rooms[this.state.currentRoom].words.shift();
         }
         this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], words: [...this.state.rooms[this.state.currentRoom].words, words] }} })
         // console.log('word', this.state.rooms[this.state.currentRoom].words);
-        // console.log('previousroom', this.state.previousRoom);
-        // console.log('currentroom', this.state.currentRoom);
     };
 
     updateNicknames = nickname => {
@@ -87,18 +87,13 @@ class Chatter extends React.Component {
             previousRoom: this.state.currentRoom,
             currentRoom: event.target.value 
         })
+        socket.emit('room', {current: event.target.value, previous: this.state.currentRoom});
     }
 
-    componentWillUpdate() {
-        socket.emit('room', {current: this.state.currentRoom, previous: this.state.previousRoom});
-    };
-  
     handleSubmit = event => {
       event.preventDefault();
       event.target.reset();
-    //   console.log('currentroom', this.state.currentRoom);
-    //   socket.emit('chat message', messageDetails);
-    socket.emit('chat message', {data: this.state.typedInput, room: this.state.currentRoom});
+      socket.emit('submit', {data: this.state.typedInput, room: this.state.currentRoom});
     };
 
     handleNewWords = event => {
@@ -120,7 +115,7 @@ class Chatter extends React.Component {
                this.setState({
                     loggedIn: true,
                });
-               socket.emit('room', this.state.currentRoom);
+               socket.emit('room', {current: this.state.currentRoom, previous: this.state.previousRoom});
            } else {
                 this.setState({
                     error: 'This moniker is already taken. Please choose another one.',
@@ -138,7 +133,7 @@ class Chatter extends React.Component {
         <If condition={this.state.loggedIn}>
         <div className='chatWrapper'>
             <div className="roomColumn">
-                <Rooms updateRooms={this.updateRooms}/>
+                <Rooms updateRooms={this.updateRooms} current={this.state.currentRoom} previous={this.state.previousRoom} words ={this.state.words} parentState={this.state}/>
             </div>
             <div className="chatColumn">
                 <h2>{this.state.currentRoom} room</h2>

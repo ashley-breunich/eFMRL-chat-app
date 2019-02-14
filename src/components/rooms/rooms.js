@@ -1,22 +1,36 @@
 import React from "react";
+// import io from 'socket.io-client';
+// const url = 'http://localhost:3000';
+// // const socket = io.connect(url);
 
 let currentRooms = ['general', 'sports', 'coding', 'fashion'];
 
-const Rooms = props => {
-    return (
-      <>
-        <h2 className='roomTitle'>Rooms</h2>
-        <div className="buttonGroup">
-            {Object.keys(currentRooms).map((room, idx) => {
-            return (
-                  <button key={currentRooms[idx]} value={currentRooms[idx]} onClick={props.updateRooms}>
-                  {currentRooms[idx]}
-                  </button>
-            );
-            })}
-        </div>
-      </>
-    );
+
+class Rooms extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      placeholderRoom: 'sports',
+      placeholderWords: {},
+    };
+  }
+  
+  render() {
+      return (
+        <>
+          <h2 className='roomTitle'>Rooms</h2>
+          <div className="buttonGroup">
+              {Object.keys(currentRooms).map((room, idx) => {
+              return (
+                    <button key={currentRooms[idx]} value={currentRooms[idx]} onClick={this.props.updateRooms}>
+                    {currentRooms[idx]}
+                    </button>
+              );
+              })}
+          </div>
+        </>
+      );
+    }
   };
   
   export default Rooms;
