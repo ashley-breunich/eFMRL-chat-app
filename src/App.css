@@ -107,7 +107,7 @@
     font-weight: 400;
     letter-spacing: .15em;
     margin-top: 2.2em;
-    font-size: 1.1em;
+    font-size: 1.3em;
   }
 
   .wordInput {
@@ -151,47 +151,6 @@
   }
 
   @media screen and (max-width: 900px) {
-    .roomColumn {
-      float: none;
-      width: 84%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .chatColumn {
-      float: none;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .buttonGroup {
-      background: #cca3e2;
-      margin-top: 1.3em;
-    }
-
-    .roomColumn h2 {
-      float: left;
-      margin-left: 2.5em;
-      margin-bottom: 4em;
-      font-size: 1.4em;
-      background: #cca3e2;
-    }
-
-    .roomColumn button {
-      text-align: right;
-      font-size: .85em;
-      margin-left: 1em;
-      display: inline;
-    }
-
-    .chatColumn h2 {
-      display: none;
-    }
-  
-  }
-
-  @media screen and (max-width: 800px) {
 
     header img {
       width: 70%;
@@ -203,7 +162,8 @@
       width: 95%;
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: 2.5em;
+      margin-bottom: 2em;
+      margin-top: -.5em;
       padding-top: .5em;
       padding-bottom: .8em;
     }
@@ -215,7 +175,7 @@
     .roomColumn button {
       text-align: left;
       font-size: .7em;
-      margin-left: .3em;
+      margin-left: .05em;
       display: inline;
     }
 
@@ -236,7 +196,8 @@
       width: 100%;
       letter-spacing: .15em;
       margin-top: 1em;
-      font-size: 1.1em;
+      margin-bottom: .6em;
+      font-size: 1.2em;
     }
 
     li {
