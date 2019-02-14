@@ -56,7 +56,7 @@
     float: left;
     width: 25%;
     background: #cca3e2;
-    border-radius: .9em;
+    border-radius: 1em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
   }
@@ -128,7 +128,7 @@
 
   li {
     color: #fff;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 700;
     letter-spacing: .05em;
     line-height: 1.7em;
@@ -192,24 +192,20 @@
   }
 
   @media screen and (max-width: 800px) {
+
+    header img {
+      width: 70%;
+      margin-bottom: .2em;
+    }
+    
     .roomColumn {
       float: none;
-      width: 84%;
+      width: 95%;
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: 2em;
-    }
-
-    .chatColumn {
-      float: none;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .buttonGroup {
-      background: #cca3e2;
-      margin-top: 1.1em;
+      margin-bottom: 2.5em;
+      padding-top: .5em;
+      padding-bottom: .8em;
     }
 
     .roomColumn h2 {
@@ -217,10 +213,22 @@
     }
 
     .roomColumn button {
-      text-align: center;
-      font-size: .85em;
-      margin-left: .8em;
+      text-align: left;
+      font-size: .7em;
+      margin-left: .3em;
       display: inline;
+    }
+
+    .buttonGroup {
+      background: #cca3e2;
+      margin-top: 1.1em;
+    }
+
+    .chatColumn {
+      float: none;
+      width: 93%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .chatColumn h2 {
@@ -229,6 +237,29 @@
       letter-spacing: .15em;
       margin-top: 1em;
       font-size: 1.1em;
+    }
+
+    li {
+      color: #fff;
+      font-size: 1em;
+      font-weight: 700;
+      letter-spacing: .05em;
+      line-height: 1.7em;
+      margin-bottom: 1em;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+  
+    .timestamp {
+      font-size: .2em;
+      font-weight: 500;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      display: block;
+      color: #fafafa;
+      text-align: left;
     }
   
   }
