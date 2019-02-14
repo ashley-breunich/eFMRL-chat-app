@@ -4,7 +4,7 @@ import Moniker from '../moniker/moniker.js';
 import Rooms from '../rooms/rooms.js';
 import If from '../if/if.js';
 
-const url = 'http://localhost:3000';
+const url = 'https://en-seven-chat-server.herokuapp.com/';
 const socket = io.connect(url);
 
 class Chatter extends React.Component {
