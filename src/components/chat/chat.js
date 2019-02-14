@@ -4,6 +4,7 @@ import Moniker from '../moniker/moniker.js';
 import Rooms from '../rooms/rooms.js';
 import If from '../if/if.js';
 
+
 const url = 'http://localhost:3000';
 const socket = io.connect(url);
 
@@ -83,9 +84,9 @@ class Chatter extends React.Component {
     };
 
     updateRooms = event => {
-        this.setState({ 
+        this.setState({
             previousRoom: this.state.currentRoom,
-            currentRoom: event.target.value 
+            currentRoom: event.target.value
         })
         socket.emit('room', {current: event.target.value, previous: this.state.currentRoom});
     }
@@ -106,7 +107,7 @@ class Chatter extends React.Component {
 
     handleNameSubmit = event => {
        event.preventDefault();
-       this.setState({ 
+       this.setState({
            moniker: this.state.typedInput,
        });
 
@@ -123,7 +124,7 @@ class Chatter extends React.Component {
            }
        });
     };
-  
+
     render() {
       return (
         <>
@@ -161,5 +162,5 @@ class Chatter extends React.Component {
       );
     }
   }
-  
+
   export default Chatter;
