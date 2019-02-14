@@ -10,25 +10,49 @@ class Rooms extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholder: '',
+      placeholderRoom: 'sports',
+      placeholderWords: {},
     };
   }
 
+  // this.state.rooms[this.state.currentRoom].words
+
+  // static getDerivedStateFromProps(props, state) {
+  //   // console.log('prev props', state.placeholderRoom);
+  //   // console.log('current props', props.current);
+  //   // console.log('state', state);
+  //   // console.log('parentState', props.parentState.rooms);
+  //   if(props.current !== state.placeholderRoom || props.parentState.rooms !== state.placeholderWords){
+  //     console.log('props.parentState.rooms', props.parentState.rooms)
+  //     console.log('state.placeholderWords', state.placeholderWords)
+  //       socket.emit('room', {current: props.current, previous: props.previous});
+  //       return {
+  //         placeholderRoom: props.current,
+  //         placeholderWords: props.parentState.rooms
+  //       }
+  //   }
+  //   if(props.current )
+  //   return {
+  //      placeholder: props.current
+  //   }
+  // }
+
   static getDerivedStateFromProps(props, state) {
-    // console.log('prev props', state.placeholder);
-    // console.log('current props', props.current);
-    if(props.current !== state.placeholder){
-        socket.emit('room', {current: props.current, previous: props.previous});
-        return {
-          placeholder: props.current
-        }
+      if(props.current !== state.placeholderRoom){
+        console.log('props.parentState.rooms', props.parentState.rooms)
+        console.log('state.placeholderWords', state.placeholderWords)
+          socket.emit('room', {current: props.current, previous: props.previous});
+          return {
+            placeholderRoom: props.current,
+            // placeholderWords: props.parentState.rooms
+          }
+      }
+      return {
+         placeholder: props.current
+      }
     }
-    return {
-       placeholder: props.current
-    }
-  }
   
-    render() {
+  render() {
       return (
         <>
           <h2 className='roomTitle'>Rooms</h2>

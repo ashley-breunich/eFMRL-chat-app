@@ -45,6 +45,7 @@ class Chatter extends React.Component {
         currentRoom: 'sports',
         previousRoom: null,
         prevProps: {},
+        count: 0,
       };
         socket.on('chat', (payload) => {
             console.log('client chat payload', payload);
@@ -67,10 +68,6 @@ class Chatter extends React.Component {
         console.log('word', this.state.rooms[this.state.currentRoom].words);
 
     };
-
-    // componentWillUpdate() {
-    //     socket.emit('room', {current: this.state.currentRoom, previous: this.state.previousRoom});
-    // };
 
     updateNicknames = nickname => {
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
@@ -99,7 +96,7 @@ class Chatter extends React.Component {
       event.preventDefault();
       event.target.reset();
     //   let current = this.state.currentRoom;
-    //   socket.to(current).emit('chat message', {data: this.state.typedInput, room: this.state.currentRoom});
+    // socket.to(this.state.currentRoom).emit('submit', {data: this.state.typedInput, room: this.state.currentRoom});
       socket.emit('submit', {data: this.state.typedInput, room: this.state.currentRoom});
     };
 
@@ -123,13 +120,16 @@ class Chatter extends React.Component {
                     loggedIn: true,
                });
                socket.emit('room', {current: this.state.currentRoom, previous: this.state.previousRoom});
-            //    socket.emit('switchRoom', this.state.currentRoom)
            } else {
                 this.setState({
                     error: 'This moniker is already taken. Please choose another one.',
                 });
            }
        });
+    };
+
+    componentWillUpdate() {
+        socket.emit('room', {current: this.state.currentRoom, previous: this.state.previousRoom});
     };
   
     render() {
@@ -141,7 +141,7 @@ class Chatter extends React.Component {
         <If condition={this.state.loggedIn}>
         <div className='chatWrapper'>
             <div className="roomColumn">
-                <Rooms updateRooms={this.updateRooms} current={this.state.currentRoom} previous={this.state.previousRoom} parentState={this.state}/>
+                <Rooms updateRooms={this.updateRooms} current={this.state.currentRoom} previous={this.state.previousRoom} words ={this.state.words} parentState={this.state}/>
             </div>
             <div className="chatColumn">
                 <h2>{this.state.currentRoom} room</h2>
