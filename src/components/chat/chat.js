@@ -64,9 +64,7 @@ class Chatter extends React.Component {
             this.state.rooms[this.state.currentRoom].words.shift();
         }
         this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], words: [...this.state.rooms[this.state.currentRoom].words, words] }} })
-
-        console.log('word', this.state.rooms[this.state.currentRoom].words);
-
+        // console.log('word', this.state.rooms[this.state.currentRoom].words);
     };
 
     updateNicknames = nickname => {
@@ -74,8 +72,7 @@ class Chatter extends React.Component {
             this.state.rooms[this.state.currentRoom].tempNames.shift();
         }
         this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], tempNames: [...this.state.rooms[this.state.currentRoom].tempNames, nickname] }} })
-        console.log('nickname', this.state.rooms[this.state.currentRoom].tempNames);
-
+        // console.log('nickname', this.state.rooms[this.state.currentRoom].tempNames);
     };
 
     updateTimestamps = timestamp => {
@@ -90,13 +87,12 @@ class Chatter extends React.Component {
             previousRoom: this.state.currentRoom,
             currentRoom: event.target.value 
         })
+        socket.emit('room', {current: event.target.value, previous: this.state.currentRoom});
     }
 
     handleSubmit = event => {
       event.preventDefault();
       event.target.reset();
-    //   let current = this.state.currentRoom;
-    // socket.to(this.state.currentRoom).emit('submit', {data: this.state.typedInput, room: this.state.currentRoom});
       socket.emit('submit', {data: this.state.typedInput, room: this.state.currentRoom});
     };
 
@@ -126,10 +122,6 @@ class Chatter extends React.Component {
                 });
            }
        });
-    };
-
-    componentWillUpdate() {
-        socket.emit('room', {current: this.state.currentRoom, previous: this.state.previousRoom});
     };
   
     render() {
