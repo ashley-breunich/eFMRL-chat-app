@@ -5,7 +5,8 @@ import MonikerLS from '../moniker/monikerLS.js';
 import Rooms from '../rooms/rooms.js';
 import If from '../if/if.js';
 
-const url = 'https://en-seven-chat-server.herokuapp.com/';
+// const url = 'https://en-seven-chat-server.herokuapp.com/';
+const url ='http://localhost:3000';
 const socket = io.connect(url);
 
 let existingLSuser = localStorage.getItem('eFMRL_user');
@@ -77,10 +78,12 @@ class Chatter extends React.Component {
     };
 
     updateTimestamps = timestamp => {
+        let newTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp.time);
+        //  timestamp.time = newTime;
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
             this.state.rooms[this.state.currentRoom].timestamps.shift();
         }
-        this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], timestamps: [...this.state.rooms[this.state.currentRoom].timestamps, timestamp] }} })
+        this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], timestamps: [...this.state.rooms[this.state.currentRoom].timestamps, newTime] }} })
     };
 
     updateRooms = event => {
