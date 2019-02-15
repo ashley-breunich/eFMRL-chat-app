@@ -45,7 +45,7 @@ class Chatter extends React.Component {
         loggedIn: false,
         inputVal: 'Type your message here...',
         error: '',
-        currentRoom: 'sports',
+        currentRoom: 'general',
         previousRoom: null,
         prevProps: {},
         count: 0,
@@ -67,7 +67,6 @@ class Chatter extends React.Component {
             this.state.rooms[this.state.currentRoom].words.shift();
         }
         this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], words: [...this.state.rooms[this.state.currentRoom].words, words] }} })
-        // console.log('word', this.state.rooms[this.state.currentRoom].words);
     };
 
     updateNicknames = nickname => {
@@ -75,7 +74,6 @@ class Chatter extends React.Component {
             this.state.rooms[this.state.currentRoom].tempNames.shift();
         }
         this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], tempNames: [...this.state.rooms[this.state.currentRoom].tempNames, nickname] }} })
-        // console.log('nickname', this.state.rooms[this.state.currentRoom].tempNames);
     };
 
     updateTimestamps = timestamp => {
@@ -104,11 +102,13 @@ class Chatter extends React.Component {
     };
 
     handleName = event => {
-        //---------------------------------------------------//
-
-        //---------------------------------------------------//
         this.setState({ moniker: event.target.value });
     };
+
+    clearLSandRefresh = e => {
+        localStorage.clear();
+        window.location.reload();
+      }
 
     handleNameSubmit = event => {
        event.preventDefault();
@@ -121,9 +121,7 @@ class Chatter extends React.Component {
        console.log("Moniker",this.state.moniker);
        console.log("Name",event.target.value);
 
-       //---------------------------------------------------//
        localStorage.setItem("eFMRL_user", moniker);
-       //---------------------------------------------------//
 
        socket.emit('new user', moniker, (data) => {
            console.log("data",data);
@@ -145,7 +143,7 @@ class Chatter extends React.Component {
         <>
         <If condition={!this.state.loggedIn}>
             <If condition={existingLSuser}>
-                <MonikerLS nameSubmit={this.handleNameSubmit}/>
+                <MonikerLS nameSubmit={this.handleNameSubmit} clear={this.clearLSandRefresh}/>
             </If>
             <If condition={!existingLSuser}>
             <Moniker nameTracker={this.handleName} nameSubmit={this.handleNameSubmit} error={this.state.error}/>
@@ -153,12 +151,13 @@ class Chatter extends React.Component {
         </If>
         <If condition={this.state.loggedIn}>
         <div className='chatWrapper'>
+            <button className='logoutButton' onClick={this.clearLSandRefresh}>Log Out</button>
             <div className="roomColumn">
                 <Rooms updateRooms={this.updateRooms} current={this.state.currentRoom} previous={this.state.previousRoom} words ={this.state.words} parentState={this.state}/>
             </div>
             <div className="chatColumn">
                 <h2>{this.state.currentRoom} room</h2>
-                <form onSubmit={this.handleSubmit} autocomplete="off">
+                <form onSubmit={this.handleSubmit} autoComplete="off">
                     <input
                         className='wordInput'
                         name="typedInput"

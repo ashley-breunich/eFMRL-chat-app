@@ -1,5 +1,4 @@
 import React from "react";
-import If from "../if/if.js";
 
 let existingUser = localStorage.getItem('eFMRL_user');
 class MonikerLS extends React.Component {
@@ -7,18 +6,16 @@ class MonikerLS extends React.Component {
     super(props);
     this.state = {};
   }
-  clearLSandRefresh = e => {
-    localStorage.clear();
-    window.location.reload();
-  }
+  
   render(){
     return (
       <>
-        <h2>Welcome back {existingUser}!</h2>
-        <button value = {existingUser} onClick={this.props.nameSubmit}>Log In</button>
-        <hr/>
-        <h3>NOT YOU? Click to sign in!</h3>
-        <button onClick={this.clearLSandRefresh}>Sign In</button>
+      <div className='center'>
+        <h2 className='loginh2'>Welcome back, {existingUser}!</h2>
+        <button className='loginButton' value = {existingUser} onClick={this.props.nameSubmit}>Log In</button>
+        <h3 className='loginh3'>Not you? Click to sign in.</h3>
+        <button className='loginButton' onClick={this.props.clear}>Sign In</button>
+      </div>
       </>
     );
     }
