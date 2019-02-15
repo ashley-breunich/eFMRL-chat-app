@@ -52,7 +52,7 @@ class Chatter extends React.Component {
         count: 0,
       };
         socket.on('chat', (payload) => {
-            console.log('client chat payload', payload);
+            // console.log('client chat payload', payload);
             this.updateWords(payload.content);
             this.updateNicknames(payload.moniker);
             this.updateTimestamps(payload.timestamp);
@@ -63,7 +63,7 @@ class Chatter extends React.Component {
         this.setState({
             rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], wordCount: this.state.rooms[this.state.currentRoom].wordCount + 1 }}
         })
-        console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
+        // console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
             this.state.rooms[this.state.currentRoom].words.shift();
         }
@@ -78,12 +78,12 @@ class Chatter extends React.Component {
     };
 
     updateTimestamps = timestamp => {
-        let newTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp.time);
-        //  timestamp.time = newTime;
+        // console.log('time stamp', timestamp);
+        // let newTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp.time);
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
             this.state.rooms[this.state.currentRoom].timestamps.shift();
         }
-        this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], timestamps: [...this.state.rooms[this.state.currentRoom].timestamps, newTime] }} })
+        this.setState({ rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], timestamps: [...this.state.rooms[this.state.currentRoom].timestamps, timestamp] }} })
     };
 
     updateRooms = event => {
@@ -120,14 +120,14 @@ class Chatter extends React.Component {
             moniker: moniker,
         }); //WHY THIS LINE EVEN HERE????????? LOOK TOMORROW!
 
-       console.log("Moniker TEST",moniker);
-       console.log("Moniker",this.state.moniker);
-       console.log("Name",event.target.value);
+    //    console.log("Moniker TEST",moniker);
+    //    console.log("Moniker",this.state.moniker);
+    //    console.log("Name",event.target.value);
 
        localStorage.setItem("eFMRL_user", moniker);
 
        socket.emit('new user', moniker, (data) => {
-           console.log("data",data);
+        //    console.log("data",data);
            if(data) {
                this.setState({
                     loggedIn: true,
@@ -172,9 +172,10 @@ class Chatter extends React.Component {
                 </form>
                 <ul>
                     {Object.keys(this.state.rooms[this.state.currentRoom].words).map((words, idx) => {
+                        let timestamp = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(this.state.rooms[this.state.currentRoom].timestamps[this.state.rooms[this.state.currentRoom].timestamps.length - (idx + 1)])
                     return (
                         <li key={this.state.rooms[this.state.currentRoom].words.length - (idx + 1)}>
-                        {this.state.rooms[this.state.currentRoom].words[this.state.rooms[this.state.currentRoom].words.length - (idx + 1)]} <span className='timestamp'>{this.state.rooms[this.state.currentRoom].tempNames[this.state.rooms[this.state.currentRoom].tempNames.length - (idx + 1)]} ·  {this.state.rooms[this.state.currentRoom].timestamps[this.state.rooms[this.state.currentRoom].timestamps.length - (idx + 1)]} </span>
+                        {this.state.rooms[this.state.currentRoom].words[this.state.rooms[this.state.currentRoom].words.length - (idx + 1)]} <span className='timestamp'>{this.state.rooms[this.state.currentRoom].tempNames[this.state.rooms[this.state.currentRoom].tempNames.length - (idx + 1)]} · {timestamp}</span>
                         </li>
                     );
                     })}
