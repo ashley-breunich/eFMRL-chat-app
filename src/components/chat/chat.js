@@ -1,11 +1,15 @@
 import React from 'react';
 import io from 'socket.io-client';
 import Moniker from '../moniker/moniker.js';
+import MonikerLS from '../moniker/monikerLS.js';
 import Rooms from '../rooms/rooms.js';
 import If from '../if/if.js';
 
+// const url = 'https://en-seven-chat-server.herokuapp.com';
 const url = 'http://localhost:3000';
 const socket = io.connect(url);
+
+let existingLSuser = localStorage.getItem('eFMRL_user');
 
 class Chatter extends React.Component {
     constructor(props) {
@@ -83,9 +87,9 @@ class Chatter extends React.Component {
     };
 
     updateRooms = event => {
-        this.setState({ 
+        this.setState({
             previousRoom: this.state.currentRoom,
-            currentRoom: event.target.value 
+            currentRoom: event.target.value
         })
         socket.emit('room', {current: event.target.value, previous: this.state.currentRoom});
     }
@@ -101,16 +105,29 @@ class Chatter extends React.Component {
     };
 
     handleName = event => {
+        //---------------------------------------------------//
+
+        //---------------------------------------------------//
         this.setState({ moniker: event.target.value });
     };
 
     handleNameSubmit = event => {
        event.preventDefault();
-       this.setState({ 
-           moniker: this.state.typedInput,
-       });
+       let moniker = event.target.value || this.state.moniker;
+       this.setState({
+            moniker: moniker,
+        }); //WHY THIS LINE EVEN HERE????????? LOOK TOMORROW!
 
-       socket.emit('new user', this.state.moniker, (data) => {
+       console.log("Moniker TEST",moniker);
+       console.log("Moniker",this.state.moniker);
+       console.log("Name",event.target.value);
+
+       //---------------------------------------------------//
+       localStorage.setItem("eFMRL_user", moniker);
+       //---------------------------------------------------//
+
+       socket.emit('new user', moniker, (data) => {
+           console.log("data",data);
            if(data) {
                this.setState({
                     loggedIn: true,
@@ -123,12 +140,17 @@ class Chatter extends React.Component {
            }
        });
     };
-  
+
     render() {
       return (
         <>
         <If condition={!this.state.loggedIn}>
+            <If condition={existingLSuser}>
+                <MonikerLS nameSubmit={this.handleNameSubmit}/>
+            </If>
+            <If condition={!existingLSuser}>
             <Moniker nameTracker={this.handleName} nameSubmit={this.handleNameSubmit} error={this.state.error}/>
+            </If>
         </If>
         <If condition={this.state.loggedIn}>
         <div className='chatWrapper'>
@@ -137,7 +159,7 @@ class Chatter extends React.Component {
             </div>
             <div className="chatColumn">
                 <h2>{this.state.currentRoom} room</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} autocomplete="off">
                     <input
                         className='wordInput'
                         name="typedInput"
@@ -161,5 +183,5 @@ class Chatter extends React.Component {
       );
     }
   }
-  
+
   export default Chatter;
