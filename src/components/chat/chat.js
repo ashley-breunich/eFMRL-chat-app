@@ -79,7 +79,7 @@ class Chatter extends React.Component {
 
     updateTimestamps = timestamp => {
         let newTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp);
-        console.log('new time', newTime);
+        // console.log('new time', newTime);
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
             this.state.rooms[this.state.currentRoom].timestamps.shift();
         }
