@@ -8,13 +8,13 @@
 
   header {
     letter-spacing: .7em;
-    padding-top: 2.5em;
+    padding-top: 1.5em;
     padding-bottom: 2em;
-    color: #fff;
+    color: #fafafa;
   }
 
   header img {
-    width: 40%;
+    width: 45%;
     margin-bottom: 1em;
   }
 
@@ -36,7 +36,7 @@
     font-size: 1.1em;
     padding: 2em;
     border: none;
-    background: #fff;
+    background: #fafafa;
     border-radius: .7em;
   }
 
@@ -55,8 +55,8 @@
   .roomColumn {
     float: left;
     width: 25%;
-    background: #bd93d3;
-    border-radius: .9em;
+    background: #cca3e2;
+    border-radius: 1em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
   }
@@ -67,13 +67,13 @@
     font-size: 1.5em;
     font-weight: 600;
     text-transform: uppercase;
-    color: #fff;
+    color: #fafafa;
     letter-spacing: .16em;
-    background: #bd93d3;
+    background: #cca3e2;
   }
 
   .buttonGroup {
-    background: #bd93d3;
+    background: #cca3e2;
   }
 
   .roomColumn button {
@@ -83,7 +83,8 @@
     font-size: .95em;
     letter-spacing: .24em;
     font-weight: 500;
-    background: #bd93d3;
+    background: #cca3e2;
+    color: #393939;
     margin-left: 1.7em;
     display: block;
     border: none;
@@ -91,7 +92,7 @@
 
   .roomColumn button:hover {
     font-weight: 900;
-    color: #311432;
+    color: #4f275b;
   }
 
   .chatColumn {
@@ -117,7 +118,7 @@
     border: none;
     border-radius: .7em;
     color: #666;
-    margin-bottom: 3em;
+    margin-bottom: 1.4em;
   }
 
   ul {
@@ -127,7 +128,7 @@
 
   li {
     color: #fff;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 700;
     letter-spacing: .05em;
     line-height: 1.7em;
@@ -149,44 +150,83 @@
     text-align: left;
   }
 
-  @media screen and (max-width: 820px) {
-    .roomColumn {
-      float: none;
-      width: 90%;
+  @media screen and (max-width: 900px) {
+
+    header img {
+      width: 70%;
+      margin-bottom: .2em;
+    }
+
+    .chatWrapper {
+      width: 100%;
       margin-left: auto;
       margin-right: auto;
+    }
+    
+    .roomColumn {
+      float: none;
+      width: 100%;
+      margin-bottom: 2em;
+      margin-top: -1em;
+      padding-top: .3em;
+      padding-bottom: .6em;
+      border-radius: 0em;
+
+    }
+
+    .roomColumn h2 {
+      display: none;
+    }
+
+    .roomColumn button {
+      text-align: left;
+      font-size: .7em;
+      margin-left: -.1em;
+      display: inline;
+    }
+
+    .buttonGroup {
+      background: #cca3e2;
+      margin-top: 1.1em;
     }
 
     .chatColumn {
       float: none;
-      width: 90%;
+      width: 93%;
       margin-left: auto;
       margin-right: auto;
-    }
-
-    .buttonGroup {
-      background: #bd93d3;
-      margin-top: 1.5em;
-    }
-
-    .roomColumn h2 {
-      float: left;
-      margin-left: 2.5em;
-      margin-bottom: 4em;
-      background: #bd93d3;
-    }
-
-    .roomColumn button {
-      text-align: right;
-      font-size: .90em;
-      margin-left: 1em;
-      display: inline;
     }
 
     .chatColumn h2 {
       text-align: center;
       width: 100%;
-      margin-top: 3em; 
+      letter-spacing: .15em;
+      margin-top: 1em;
+      margin-bottom: .4em;
+      font-size: 1.1em;
+    }
+
+    li {
+      color: #fff;
+      font-size: 1em;
+      font-weight: 700;
+      letter-spacing: .05em;
+      line-height: 1.7em;
+      margin-bottom: 1em;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+  
+    .timestamp {
+      font-size: .2em;
+      font-weight: 500;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      display: block;
+      color: #fafafa;
+      text-align: left;
     }
   
   }

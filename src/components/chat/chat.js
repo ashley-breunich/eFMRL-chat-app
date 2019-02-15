@@ -5,8 +5,7 @@ import MonikerLS from '../moniker/monikerLS.js';
 import Rooms from '../rooms/rooms.js';
 import If from '../if/if.js';
 
-const url = 'https://en-seven-chat-server.herokuapp.com';
-// const url = 'http://localhost:3000';
+const url = 'https://en-seven-chat-server.herokuapp.com/';
 const socket = io.connect(url);
 
 let existingLSuser = localStorage.getItem('eFMRL_user');
