@@ -10,7 +10,7 @@ class Rooms extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholderRoom: 'sports',
+      placeholderRoom: 'general',
       placeholderWords: {},
     };
   }
@@ -22,9 +22,9 @@ class Rooms extends React.Component {
           <div className="buttonGroup">
               {Object.keys(currentRooms).map((room, idx) => {
               return (
-                    <button key={currentRooms[idx]} value={currentRooms[idx]} onClick={this.props.updateRooms}>
-                    {currentRooms[idx]}
-                    </button>
+                <button key={currentRooms[idx]} value={currentRooms[idx]} onClick={this.props.updateRooms} style={ (this.props.current === currentRooms[idx]) ? { fontWeight: 'bold' } : { fontWeight: 'normal' }}>
+                {currentRooms[idx]}
+                </button>  
               );
               })}
           </div>

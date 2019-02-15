@@ -32,12 +32,83 @@
     transform: translate(-50%, -50%);
   }
 
+  .center {
+    margin: 0;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
   .loginInput {
     font-size: 1.1em;
     padding: 2em;
     border: none;
     background: #fafafa;
-    border-radius: .7em;
+    border-radius: .4em;
+  }
+
+  .loginh2 {
+    color: #fafafa;
+    font-size: 1.5em;
+    letter-spacing: .05em;
+    font-weight: 400;
+  }
+
+  .loginh3 {
+    color: #fafafa;
+    font-size: 1em;
+    letter-spacing: .03em;
+    font-weight: 400;
+  }
+
+  .loginButton {
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding-top: .7em;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: .7em;
+    margin-top: -.1em;
+    margin-bottom: 2.5em;
+    border: none;
+    border-radius: .2em;
+    background: #cca3e2;
+    color: #fafafa;
+  }
+
+  .logoutButton {
+    font-size: .8em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding-top: .7em;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: .7em;
+    margin-top: -.1em;
+    margin-bottom: 2.5em;
+    border: none;
+    border-radius: .2em;
+    background: #4f275b;
+    color: #fafafa;
+  }
+
+  .logoutButton:hover {
+    background: #5d326a;
+    color: #fafafa;
+  }
+
+  .loginButton:last-child {
+    margin-bottom: 0em;
+  }
+
+  .loginButton:hover {
+    background: #fafafa;
+    color: #cca3e2;
   }
 
   .loginError {
@@ -56,7 +127,7 @@
     float: left;
     width: 25%;
     background: #cca3e2;
-    border-radius: 1em;
+    border-radius: .5em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
   }
@@ -116,7 +187,7 @@
     font-size: 1.1em;
     padding: 1.5em;
     border: none;
-    border-radius: .7em;
+    border-radius: .4em;
     color: #666;
     margin-bottom: 1.4em;
   }
@@ -155,6 +226,20 @@
     header img {
       width: 70%;
       margin-bottom: .2em;
+    }
+
+    .loginh2 {
+      color: #fafafa;
+      font-size: 1.2em;
+      letter-spacing: .05em;
+      font-weight: 500;
+    }
+  
+    .loginh3 {
+      color: #fafafa;
+      font-size: .9em;
+      letter-spacing: .03em;
+      font-weight: 400;
     }
 
     .chatWrapper {
