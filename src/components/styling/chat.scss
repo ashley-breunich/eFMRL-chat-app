@@ -1,0 +1,91 @@
+.chatColumn h2 {
+  text-align: right;
+  width: 90%;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: .15em;
+  margin-top: 2.2em;
+  font-size: 1.3em;
+}
+
+.wordInput {
+  background: #fff;
+  width:85%;
+  font-size: 1.1em;
+  padding: 1.5em;
+  border: none;
+  border-radius: .7em;
+  color: #666;
+  margin-bottom: 3em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: .05em;
+  line-height: 1.7em;
+  margin-bottom: 2em;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.timestamp {
+  margin-top: .2em;
+  font-size: .5em;
+  font-weight: 500;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  display: block;
+  color: #fafafa;
+  text-align: left;
+}
+
+@media screen and (max-width: 820px) {
+  .roomColumn {
+    float: none;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .chatColumn {
+    float: none;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttonGroup {
+    background: #bd93d3;
+    margin-top: 1.5em;
+  }
+
+  .roomColumn h2 {
+    float: left;
+    margin-left: 2.5em;
+    margin-bottom: 4em;
+    background: #bd93d3;
+  }
+
+  .roomColumn button {
+    text-align: right;
+    font-size: .90em;
+    margin-left: 1em;
+    display: inline;
+  }
+
+  .chatColumn h2 {
+    text-align: center;
+    width: 100%;
+    margin-top: 3em; 
+  }
+
+}

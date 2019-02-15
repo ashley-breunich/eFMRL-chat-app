@@ -1,0 +1,47 @@
+.chatWrapper {
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.roomColumn {
+  float: left;
+  width: 25%;
+  background: #bd93d3;
+  border-radius: .9em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+.roomColumn h2 {
+  text-align: left;
+  margin-left: 1.2em;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: .16em;
+  background: #bd93d3;
+}
+
+.buttonGroup {
+  background: #bd93d3;
+}
+
+.roomColumn button {
+  text-align: left;
+  margin-left: 0;
+  margin-bottom: 1.1em;
+  font-size: .95em;
+  letter-spacing: .24em;
+  font-weight: 500;
+  background: #bd93d3;
+  margin-left: 1.7em;
+  display: block;
+  border: none;
+}
+
+.roomColumn button:hover {
+  font-weight: 900;
+  color: #311432;
+}
