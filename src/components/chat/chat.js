@@ -151,9 +151,11 @@ class Chatter extends React.Component {
         </If>
         <If condition={this.state.loggedIn}>
         <div className='chatWrapper'>
-            <button className='logoutButton' onClick={this.clearLSandRefresh}>Log Out</button>
-            <div className="roomColumn">
-                <Rooms updateRooms={this.updateRooms} current={this.state.currentRoom} previous={this.state.previousRoom} words ={this.state.words} parentState={this.state}/>
+            <div className="leftFloat">
+                <div className="roomColumn">
+                    <Rooms updateRooms={this.updateRooms} current={this.state.currentRoom} previous={this.state.previousRoom} words ={this.state.words} parentState={this.state}/>
+                </div>
+                <button className='logoutButton' onClick={this.clearLSandRefresh}>Log Out</button>
             </div>
             <div className="chatColumn">
                 <h2>{this.state.currentRoom} room</h2>
