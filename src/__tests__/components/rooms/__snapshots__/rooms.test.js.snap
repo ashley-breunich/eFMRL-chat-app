@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Room /> Header renders correctly 1`] = `
+Array [
+  <h2
+    className="roomTitle"
+  >
+    Rooms
+  </h2>,
+  <div
+    className="buttonGroup"
+  >
+    <button
+      style={
+        Object {
+          "fontWeight": "normal",
+        }
+      }
+      value="general"
+    >
+      general
+    </button>
+    <button
+      style={
+        Object {
+          "fontWeight": "normal",
+        }
+      }
+      value="sports"
+    >
+      sports
+    </button>
+    <button
+      style={
+        Object {
+          "fontWeight": "normal",
+        }
+      }
+      value="coding"
+    >
+      coding
+    </button>
+    <button
+      style={
+        Object {
+          "fontWeight": "normal",
+        }
+      }
+      value="fashion"
+    >
+      fashion
+    </button>
+  </div>,
+]
+`;

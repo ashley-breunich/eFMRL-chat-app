@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Header /> renders correctly 1`] = `
+exports[`<MonikerLS /> Moniker renders correctly 1`] = `
 <div
   className="center"
 >

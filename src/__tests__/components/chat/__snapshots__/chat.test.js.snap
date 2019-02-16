@@ -1,16 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Moniker /> Moniker renders correctly 1`] = `
+exports[`<Chat /> Moniker renders correctly 1`] = `
 <form
   className="loginForm"
+  onSubmit={[Function]}
 >
   <input
     className="loginInput"
     name="typedInput"
+    onChange={[Function]}
     placeholder="What is your name?"
   />
   <p
     className="loginError"
-  />
+  >
+    
+  </p>
 </form>
 `;
