@@ -52,10 +52,14 @@ class Chatter extends React.Component {
         count: 0,
       };
         socket.on('chat', (payload) => {
-            // console.log('client chat payload', payload);
-            this.updateWords(payload.content);
-            this.updateNicknames(payload.moniker);
-            this.updateTimestamps(payload.timestamp);
+            console.log('client chat payload', payload);
+            if(!this.state.moniker) {
+                window.location.reload();
+            } else {
+                this.updateWords(payload.content);
+                this.updateNicknames(payload.moniker);
+                this.updateTimestamps(payload.timestamp);
+            }
         });
     }
 
@@ -163,14 +167,12 @@ class Chatter extends React.Component {
             <div className="chatColumn">
                 <h2>{this.state.currentRoom} room</h2>
                 <form onSubmit={this.handleSubmit} autoComplete="off">
-                    <If condition={existingLSuser}>
                         <input
                             className='wordInput'
                             name="typedInput"
                             placeholder={this.state.inputVal}
                             onChange={this.handleNewWords}
                         />
-                    </If>
                 </form>
                 <ul>
                     {Object.keys(this.state.rooms[this.state.currentRoom].words).map((words, idx) => {
