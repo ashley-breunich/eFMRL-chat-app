@@ -9,7 +9,7 @@ const url = 'https://en-seven-chat-server.herokuapp.com/';
 // const url ='http://localhost:3000';
 const socket = io.connect(url);
 
-let existingLSuser = localStorage.getItem('eFMRL_user');
+let existingLSuser = localStorage.getItem('eFMRL_user'); 
 
 class Chatter extends React.Component {
     constructor(props) {
@@ -122,7 +122,7 @@ class Chatter extends React.Component {
 
     //    console.log("Moniker TEST",moniker);
     //    console.log("Moniker",this.state.moniker);
-    //    console.log("Name",event.target.value);
+     //    console.log("Name",event.target.value);
 
        localStorage.setItem("eFMRL_user", moniker);
 
@@ -163,12 +163,14 @@ class Chatter extends React.Component {
             <div className="chatColumn">
                 <h2>{this.state.currentRoom} room</h2>
                 <form onSubmit={this.handleSubmit} autoComplete="off">
-                    <input
-                        className='wordInput'
-                        name="typedInput"
-                        placeholder={this.state.inputVal}
-                        onChange={this.handleNewWords}
-                    />
+                    <If condition={existingLSuser}>
+                        <input
+                            className='wordInput'
+                            name="typedInput"
+                            placeholder={this.state.inputVal}
+                            onChange={this.handleNewWords}
+                        />
+                    </If>
                 </form>
                 <ul>
                     {Object.keys(this.state.rooms[this.state.currentRoom].words).map((words, idx) => {
