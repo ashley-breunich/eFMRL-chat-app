@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 let existingUser = localStorage.getItem('eFMRL_user');
 class MonikerLS extends React.Component {
@@ -6,7 +6,7 @@ class MonikerLS extends React.Component {
     super(props);
     this.state = {};
   }
-  
+
   render(){
     return (
       <>
@@ -18,7 +18,7 @@ class MonikerLS extends React.Component {
       </div>
       </>
     );
-    }
-};
+  }
+}
 
-  export default MonikerLS;
+export default MonikerLS;

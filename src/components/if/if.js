@@ -1,5 +1,5 @@
 const If = props => {
-    return !!props.condition ? props.children : null;
-  };
+  return props.condition ? props.children : null;
+};
   
-  export default If;
+export default If;

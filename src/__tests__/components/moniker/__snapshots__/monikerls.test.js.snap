@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders correctly 1`] = `
+<div
+  className="center"
+>
+  <h2
+    className="loginh2"
+  >
+    Welcome back, 
+    !
+  </h2>
+  <button
+    className="loginButton"
+    value={null}
+  >
+    Log In
+  </button>
+  <h3
+    className="loginh3"
+  >
+    Not you? Click to sign in.
+  </h3>
+  <button
+    className="loginButton"
+  >
+    Sign In
+  </button>
+</div>
+`;
