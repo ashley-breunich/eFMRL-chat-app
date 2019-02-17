@@ -53,7 +53,7 @@ class Chatter extends React.Component {
       };
         socket.on('chat', (payload) => {
             console.log('client chat payload', payload);
-            if(!this.state.moniker) {
+            if(this.state.moniker === '') {
                 window.location.reload();
             } else {
                 this.updateWords(payload.content);
