@@ -21,9 +21,9 @@
 ---
 ### Code Example
 
-![dynamodb](/img/dynamodb.png)
+![dynamodb](/src/assets/dynamodb.png)
 
-![serverless](/img/serverless.png)
+![serverless](/src/assets/serverless.png)
 
 ---
 ### Motivation
