@@ -52,7 +52,6 @@ class Chatter extends React.Component {
         count: 0,
       };
         socket.on('chat', (payload) => {
-            // console.log('client chat payload', payload);
             if(this.state.moniker === '') {
                 window.location.reload();
             } else {
@@ -67,7 +66,6 @@ class Chatter extends React.Component {
         this.setState({
             rooms: {...this.state.rooms, [this.state.currentRoom]: {...this.state.rooms[this.state.currentRoom], wordCount: this.state.rooms[this.state.currentRoom].wordCount + 1 }}
         })
-        // console.log('word count', this.state.rooms[this.state.currentRoom].wordCount);
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
             this.state.rooms[this.state.currentRoom].words.shift();
         }
@@ -83,7 +81,6 @@ class Chatter extends React.Component {
 
     updateTimestamps = timestamp => {
         let newTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(timestamp);
-        // console.log('new time', newTime);
         if (this.state.rooms[this.state.currentRoom].wordCount > 15) {
             this.state.rooms[this.state.currentRoom].timestamps.shift();
         }
@@ -122,16 +119,11 @@ class Chatter extends React.Component {
        let moniker = event.target.value || this.state.moniker;
        this.setState({
             moniker: moniker,
-        }); //WHY THIS LINE EVEN HERE????????? LOOK TOMORROW!
-
-    //    console.log("Moniker TEST",moniker);
-    //    console.log("Moniker",this.state.moniker);
-     //    console.log("Name",event.target.value);
+        });
 
        localStorage.setItem("eFMRL_user", moniker);
 
        socket.emit('new user', moniker, (data) => {
-        //    console.log("data",data);
            if(data) {
                this.setState({
                     loggedIn: true,
