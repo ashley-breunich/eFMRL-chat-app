@@ -84,6 +84,132 @@ React State Management
 ![socket io example](/src/assets/socket-io-example.png)
 Socket.io Example
 
+## Modules
+
+### `app.js`
+#### Exported Values and Methods
+
+##### `Class App`
+
+###### `render() -> div`
+--> Header Component
+
+--> Chatter Component
+
+### `header.js`
+#### Exported Values and Methods
+
+##### `Header - Functional Component`
+<-- props
+
+--> header which include an img tag
+
+### `if.js`
+#### Exported Values and Methods
+
+##### `If - Functional Component`
+<-- props
+
+--> props.children if TRUE or null if FALSE
+
+### `moniker.js`
+#### Exported Values and Methods
+
+##### `Moniker - Functional Component`
+<-- props
+
+--> form with an input and a p tag
+
+### `monikerLS.js`
+#### Exported Values and Methods
+
+##### `MonikerLS Class`
+<-- props
+
+--> div with headers (h2 and h3) and two buttons
+
+### `rooms.js`
+#### Exported Values and Methods
+
+##### `Rooms Class`
+<-- props
+
+--> h2 and iterates over buttons that acts as the room option navigation
+
+### `chat.js`
+#### Exported Values and Methods
+
+##### `Chatter Class`
+Controls the overall app state and interacts with the socket.io server (this is the only component that does so)
+
+##### `updateWords()`
+<-- words
+
+Sets the state: wordCount & words
+
+It also controls the number of messages shown. It shifts the oldest value off the array once the wordCount is greater than 15.
+
+##### `updateNicknames()`
+<-- nickname
+
+Sets the state: tempNames
+
+It also controls the number of nicknames shown. It shifts the oldest value off the array once the wordCount is greater than 15.
+
+##### `updateTimestamps()`
+<-- timestamp
+
+Sets the state: timestamps
+
+It converts the timestamp to the correct timezone and also controls the number of timestamps shown. It shifts the oldest value off the array once the wordCount is greater than 15.
+
+##### `updateRooms()`
+<-- event
+
+Sets the state: previousRoom & currentRoom
+
+It emits 'room' with the current room value (event.target.value) and the previous room value (this.state.currentRoom).
+
+##### `handleSubmit()`
+<-- event
+
+It prevents default (reloading) and resets the form details.
+
+It also emits 'submit' with the typed form input and the current room.
+
+##### `handleNewWords()`
+<-- event
+
+Sets the state: typedInput
+
+##### `handleName()`
+<-- event
+
+Sets the state: moniker
+
+##### `clearLSandRefresh()`
+<-- event
+
+Clears local storage and refreshes the window.
+
+##### `handleNameSubmit()`
+<-- event
+
+It prevents default
+
+Sets the state: moniker
+
+Sets local storage
+
+It emits 'new user' with the name value. If the name comes back true from the server (meaning it is not a name currently in the name array), it sets the loggedIn state to TRUE and emits 'room' with the current and previous room names. If the name comes back false from the server (meaning it is a duplicate name of someone already in the array), it sets the error state and forces the user to log in again. 
+
+##### `render()`
+--> MonikerLS Component
+
+--> Moniker Component 
+
+--> all of the content of the chat (the room column and the chat column)
+
 ## Testing
 The React components of this application are tested with Enzyme. The testing that was completed made sure certain elements were rendering properly. 
 

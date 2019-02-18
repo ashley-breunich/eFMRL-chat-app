@@ -1,10 +1,6 @@
 import React from "react";
-// import io from 'socket.io-client';
-// const url = 'http://localhost:3000';
-// // const socket = io.connect(url);
 
 let currentRooms = ['general', 'sports', 'coding', 'fashion'];
-
 
 class Rooms extends React.Component {
   constructor(props) {
