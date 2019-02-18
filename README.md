@@ -1,6 +1,6 @@
 # eFMRL Chat
 
-### Synopsis
+## Synopsis
 
 eFMRL Chat is an app similar to Slack allowing users and developers to communicate and view messages instantly. However, eFMRL stands out because the user will only view the last 15 messages giving the user or developer an opportunity to focus on specific topics that matter. In a short time, the content will disappear and a new topic will emerge. The following packages were utilized throughout the project: 
 
@@ -20,14 +20,14 @@ eFMRL Chat is an app similar to Slack allowing users and developers to communica
 ##### * **React-scripts”: “2.1.3"**
 ##### * **socket.io-client”: “^2.2.0"**
 
-### Motivation
+## Motivation
 
 eFRML chat was created due to the fact that users in the business industry and developers utilized Slack and realized that myriad of messages was loaded in a specific chat room with several topics instead of one specific topic. 
 
-### Getting Started
+## Getting Started
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
@@ -64,18 +64,19 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-### Accessing the Site
+## Accessing the Site
 
 Anyone can log in and interact with the site at [www.efmrlchat.com](https://dolzevpkmrz8a.cloudfront.net/).
 
-### Code Example
+## Code Example
 
 ![react state](/src/assets/react-state.png)
 React State Management
 
-![socket io sample](/src/assets/socket-io-example.png)
+![socket io example](/src/assets/socket-io-example.png)
+Socket.io Example
 
-### Contributors
+## Contributors
 
 #### Product Manager: 
 [Juan Betancourt](https://www.linkedin.com/in/juan11/) 
@@ -108,6 +109,6 @@ React State Management
 
 [Chris Kozlowski](https://www.linkedin.com/in/kozlowskicd)
 
-### License
+## License
 #### MIT License
 A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
