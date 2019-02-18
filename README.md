@@ -40,36 +40,35 @@ This is where a developer may view all the source files that include the UI desi
 ---
 ### Contributors
 
-#### Product Manager: Juan Betancourt 
-###### https://www.linkedin.com/in/juan11/
+#### Product Manager: 
+[Juan Betancourt](https://www.linkedin.com/in/juan11/) 
 
 #### Developers:
 ##### _**Dev OPS Team**_
-#### Hai Le
-###### https://www.linkedin.com/in/hai-le-50a726163/
-#### Hollie Thomas
-###### https://www.linkedin.com/in/holliemthomas/
+[Hai Le](https://www.linkedin.com/in/hai-le-50a726163/)
+
+[Hollie Thomas](https://www.linkedin.com/in/holliemthomas/)
+
 ##### _**Server Team**_
-#### Michael Kermes
-###### https://www.linkedin.com/in/mkermes/
-#### James McDaniel
-###### https://www.linkedin.com/in/james-l-mcdaniel/
-#### Ed Puzino
-###### https://www.linkedin.com/in/edward-puzino/
+[Michael Kermes](https://www.linkedin.com/in/mkermes/)
+
+[James McDaniel](https://www.linkedin.com/in/james-l-mcdaniel/)
+
+[Ed Puzino](https://www.linkedin.com/in/edward-puzino/)
+
 ##### _**Database Team**_
-#### Kevin O'Halloran
-###### https://www.linkedin.com/in/kevin-ohalloran/
-#### Chris Kozlowski 
-###### www.linkedin.com/in/kozlowskicd
+[Kevin O'Halloran](https://www.linkedin.com/in/kevin-ohalloran/)
+
+[Chris Kozlowski](https://www.linkedin.com/in/kozlowskicd)
+
 ##### _**UI Team**_
-#### Ashley Breunich
-###### https://www.linkedin.com/in/ashley-breunich/ 
-#### James Denton
-###### https://www.linkedin.com/in/jamesmorgandenton/ 
-#### Brandon Haynes
-###### www.linkedin.com/in/brandonhaynes100 
-#### Matt McQuain
-###### https://www.linkedin.com/in/matthew-mcquain/
+[Ashley Breunich](https://www.linkedin.com/in/ashley-breunich/) 
+
+[James Denton](https://www.linkedin.com/in/jamesmorgandenton/)
+
+[Brandon Haynes](www.linkedin.com/in/brandonhaynes100 )
+
+[Matt McQuain](https://www.linkedin.com/in/matthew-mcquain/)
 ---
 ### License
 #### MIT License
