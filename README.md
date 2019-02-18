@@ -25,7 +25,11 @@ eFMRL Chat is an app similar to Slack allowing users and developers to communica
 eFRML chat was created due to the fact that users in the business industry and developers utilized Slack and realized that myriad of messages was loaded in a specific chat room with several topics instead of one specific topic. 
 
 ## Getting Started
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In order to make edits to this application for your own use, you will need a basic understanding of JavaScript, [Socket.io](https://socket.io/docs/), and [React](https://reactjs.org/). 
+
+If you need to make edits to these files, fork [the socket.io client](https://github.com/ashley-breunich/final-chat-app) repo, clone it down to your computer, and install all of the dependecies (npm install). In order to run it locally, type 'npm start' into your CLI. It will start up on port 3001. 
+
+This repository is currently connected to a socket.io server hosted on Heroku. In order to make edits to the server-side code, fork and clone [this repo](https://github.com/edpuzino/chat-app). In order to run the server locally, type 'nodemon' into your CLI and leave it running while your client code is also running. 
 
 ### Available Scripts
 
@@ -34,7 +38,7 @@ In the project directory, you can run:
 #### `npm start`
 
 Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
@@ -68,7 +72,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Anyone can log in and interact with the site at [www.efmrlchat.com](https://dolzevpkmrz8a.cloudfront.net/).
 
-## Code Example
+### Setup
+#### `.env` requirements
+* `NODE PATH` - NODE_PATH=src (for testing purposes)
+
+## Code Examples
 
 ![react state](/src/assets/react-state.png)
 React State Management
@@ -76,12 +84,15 @@ React State Management
 ![socket io example](/src/assets/socket-io-example.png)
 Socket.io Example
 
+## Testing
+The React components of this application are tested with Enzyme. The testing that was completed made sure certain elements were rendering properly. 
+
 ## Contributors
 
-#### Product Manager: 
+### Product Manager: 
 [Juan Betancourt](https://www.linkedin.com/in/juan11/) 
 
-#### Developers:
+### Developers:
 
 ##### _**UI Team**_
 [Ashley Breunich](https://www.linkedin.com/in/ashley-breunich/) 
