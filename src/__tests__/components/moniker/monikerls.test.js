@@ -27,4 +27,9 @@ describe('<MonikerLS />', () => {
     const header = renderer.create(<MonikerLS />).toJSON();
     expect(header).toMatchSnapshot();
   });
+
+  // it('renders three <Foo /> components', () => {
+  //   const wrapper = shallow(<MonikerLS />);
+  //   expect(wrapper.find('.loginButton')).to.have.lengthOf(2);
+  // });
 });
